@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | Dashboard DevOps</title>
+</head>
+<body>
+<h1>Cadastro de usuário</h1>
+<p th:if="${error}" th:text="${error}"></p>
+<form th:action="@{/register}" th:object="${registrationRequest}" method="post">
+    <label for="email">E-mail</label>
+    <input id="email" type="email" th:field="*{email}" required />
+    <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+
+    <label for="password">Senha</label>
+    <input id="password" type="password" th:field="*{password}" required minlength="8" />
+    <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+
+    <button type="submit">Cadastrar</button>
+</form>
+<p>Já possui conta? <a th:href="@{/login}">Login</a></p>
+</body>
+</html>

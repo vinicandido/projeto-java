@@ -1,0 +1,10 @@
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/DevopsDashboardApplication.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/config/SecurityConfig.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/controller/AuthController.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/controller/DashboardController.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/model/UserEntity.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/repository/UserRepository.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/service/AppUserDetailsService.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/service/MetricsService.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/service/RegistrationRequest.java
+/home/vini/projeto-java/src/main/java/com/example/devopsdashboard/service/UserService.java

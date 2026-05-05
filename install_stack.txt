@@ -1,0 +1,68 @@
+sudo apt install openjdk-21-jdk -y
+    ```
+3.  **Verifique a instalação:**
+    ```bash
+    java -version
+    ```
+
+---
+
+## 2. PostgreSQL 14+
+Embora o Debian venha com o PostgreSQL, para garantir a versão 14 ou superior (atualmente a 16 ou 17 são recomendadas), o melhor caminho é usar o repositório oficial do PostgreSQL.
+
+1.  **Importe a chave GPG e o repositório:**
+    
+```bash
+    sudo apt install curl ca-certificates gnupg -y
+    curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /usr/share/keyrings/pgdg.gpg > /dev/null
+    echo "deb [signed-by=/usr/share/keyrings/pgdg.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+    ```
+2.  **Instale o PostgreSQL (Exemplo versão 16):**
+    ```bash
+    sudo apt update
+    sudo apt install postgresql-16 -y
+    ```
+3.  **Verifique o status:**
+    ```bash
+    sudo systemctl status postgresql
+    ```
+
+---
+
+## 3. Maven 3.9+
+O repositório padrão do Debian às vezes traz versões mais antigas (como a 3.8). Para garantir a **3.9.x**, a instalação manual é a mais segura e limpa.
+
+1.  **Baixe o binário (Verifique a última versão no site do Maven):**
+    ```bash
+    wget https://dlcdn.apache.org/maven/maven-3/3.9.15/binaries/apache-maven-3.9.15-bin.tar.gz
+    ```
+2.  **Extraia para o diretório `/opt`:**
+    ```bash
+    sudo tar -xvzf apache-maven-3.9.15-bin.tar.gz -C /opt
+    ```
+3.  **Configure as Variáveis de Ambiente:**
+    Abra o arquivo de perfil (ex: `nano ~/.bashrc`) e adicione as seguintes linhas ao final:
+    
+```bash
+    export M2_HOME=/opt/apache-maven-3.9.15
+    export PATH=$M2_HOME/bin:$PATH
+    ```
+4.  **Aplique as mudanças:**
+    ```bash
+    source ~/.bashrc
+    ```
+5.  **Verifique:**
+    
+```bash
+    mvn -version
+    ```
+
+---
+
+### Resumo de Verificação Final
+Para ter certeza de que tudo está conversando corretamente, execute:
+*   `java -version` (Deve retornar 21.x)
+*   `mvn -version` (Deve retornar 3.9.x)
+*   `psql --version` (Deve retornar 14.x ou superior)
+
+> **Dica de mestre:** Se você precisar alternar entre várias versões de Java no futuro, instale o pacote `update-java-alternatives` para gerenciar as versões facilmente.
